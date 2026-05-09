@@ -1,116 +1,168 @@
+# Solicita al usuario cuántas personas serán registradas
 personas = int(input("Ingrese el número de personas que serán registradas: "))
 
-# Validar cantidad de personas
+
+# Valida que el número de personas sea mayor a 0
 while personas <= 0:
+
+    # Mensaje de error si el número es inválido
     print("El número de personas debe ser un entero positivo.")
+
+    # Vuelve a pedir el número de personas
     personas = int(input("Ingrese el número de personas que serán registradas: "))
 
 
-# Ciclo para registrar personas
+# Ciclo principal que se repetirá mientras haya personas por registrar
 while personas > 0:
 
+    # Imprime un título para separar registros
     print("\nRegistro de persona")
 
 
-    # VALIDAR NOMBRE
+    # ---------------- VALIDACIÓN DEL NOMBRE ----------------
+
+    # Ciclo infinito hasta que el nombre sea válido
     while True:
 
+        # Solicita el nombre
         nombre = input("Ingrese su nombre: ")
 
+        # Verifica si el campo está vacío
         if nombre.strip() == "":
             print("No se ha ingresado un nombre válido.")
 
+        # Verifica que tenga mínimo 3 letras y solo letras
         elif len(nombre) >= 3 and nombre.isalpha():
             print("Nombre válido.")
+
+            # Sale del ciclo porque el nombre es correcto
             break
 
+        # Si no cumple las condiciones
         else:
             print("Nombre no válido. Debe tener al menos 3 caracteres y solo contener letras.")
 
 
-    # VALIDAR APELLIDO PATERNO
+    # ---------------- VALIDACIÓN DEL APELLIDO PATERNO ----------------
+
     while True:
 
+        # Solicita apellido paterno
         apellidopaterno = input("Ingrese su apellido paterno: ")
 
+        # Valida campo vacío
         if apellidopaterno.strip() == "":
             print("No se ha ingresado un apellido paterno válido.")
 
+        # Verifica longitud y letras
         elif len(apellidopaterno) >= 3 and apellidopaterno.isalpha():
             print("Apellido paterno válido.")
+
+            # Sale del ciclo
             break
 
         else:
             print("Apellido paterno no válido. Debe tener al menos 3 caracteres y solo contener letras.")
 
 
-    # VALIDAR APELLIDO MATERNO
+    # ---------------- VALIDACIÓN DEL APELLIDO MATERNO ----------------
+
     while True:
 
+        # Solicita apellido materno
         apellidomaterno = input("Ingrese su apellido materno: ")
 
+        # Valida vacío
         if apellidomaterno.strip() == "":
             print("No se ha ingresado un apellido materno válido.")
 
+        # Verifica letras y longitud
         elif len(apellidomaterno) >= 3 and apellidomaterno.isalpha():
             print("Apellido materno válido.")
+
+            # Sale del ciclo
             break
 
         else:
             print("Apellido materno no válido. Debe tener al menos 3 caracteres y solo contener letras.")
 
 
-    # VALIDAR EDAD
+    # ---------------- VALIDACIÓN DE EDAD ----------------
+
     while True:
 
+        # Solicita edad
         edad = input("Ingrese su edad: ")
 
+        # Valida vacío
         if edad.strip() == "":
             print("No se ha ingresado una edad válida.")
 
+        # Verifica que sea número y esté en rango válido
         elif edad.isdigit() and 0 < int(edad) < 120:
             print("Edad válida.")
+
+            # Sale del ciclo
             break
 
         else:
             print("Edad no válida. Debe ser un número entero entre 1 y 119.")
 
 
-    # VALIDAR PESO
+    # ---------------- VALIDACIÓN DE PESO ----------------
+
     while True:
 
+        # Solicita peso
         peso = input("Ingrese su peso en kg: ")
 
+        # Valida vacío
         if peso.strip() == "":
             print("No se ha ingresado un peso válido.")
 
+        # Verifica si es número decimal positivo
         elif peso.replace('.', '', 1).isdigit() and float(peso) > 0:
             print("Peso válido.")
+
+            # Sale del ciclo
             break
 
         else:
             print("Peso no válido. Debe ser un número positivo.")
 
 
-    # VALIDAR ESTATURA
+    # ---------------- VALIDACIÓN DE ESTATURA ----------------
+
     while True:
 
+        # Solicita estatura
         estatura = input("Ingrese su estatura en metros: ")
 
+        # Valida vacío
         if estatura.strip() == "":
             print("No se ha ingresado una estatura válida.")
 
+        # Verifica si es decimal positivo
         elif estatura.replace('.', '', 1).isdigit() and float(estatura) > 0:
             print("Estatura válida.")
+
+            # Sale del ciclo
             break
 
         else:
             print("Estatura no válida. Debe ser un número positivo.")
 
 
-    # CALCULAR IMC
+    # ---------------- CÁLCULO DEL IMC ----------------
+
+    # Fórmula del IMC:
+    # peso dividido entre estatura al cuadrado
     IMC = float(peso) / (float(estatura) ** 2)
 
+
+    # ---------------- CLASIFICACIÓN DEL IMC ----------------
+
+    # Evalúa el rango del IMC
     if IMC >= 0 and IMC <= 15.99:
         print("Delgadez severa")
 
@@ -136,14 +188,28 @@ while personas > 0:
         print("Obesidad mórbida")
 
 
-    # MOSTRAR DATOS
+    # ---------------- MOSTRAR RESULTADOS ----------------
+
+    # Imprime encabezado
     print("\n--- DATOS DEL USUARIO ---")
+
+    # Imprime nombre completo
     print(f"Nombre completo: {nombre} {apellidopaterno} {apellidomaterno}")
+
+    # Imprime edad
     print(f"Edad: {edad} años")
+
+    # Imprime peso
     print(f"Peso: {peso} kg")
+
+    # Imprime estatura
     print(f"Estatura: {estatura} m")
+
+    # Imprime IMC con 2 decimales
     print(f"El IMC de {nombre} es: {IMC:.2f}")
 
 
-    # Restar una persona registrada
+    # ---------------- CONTADOR ----------------
+
+    # Resta una persona al contador
     personas = personas - 1
